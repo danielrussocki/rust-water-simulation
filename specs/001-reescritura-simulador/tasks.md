@@ -17,15 +17,15 @@ Referencia: [spec aprobada](spec.md) y [plan aprobado](plan.md).
 **RF:** RF-11 parcial. **Dependencias:** ninguna.  
 **Resultado observable:** una ventana enumera todos los assets ausentes o dañados, impide iniciar la simulación y permite reintentar cerrando y abriendo tras corregirlos.
 
-- [ ] **S01-T01** Escribir pruebas de comportamiento para uno y varios assets ausentes o dañados. **RF:** RF-11. **Hecho cuando:** las pruebas exigen la lista completa y el bloqueo del inicio.
-- [ ] **S01-T02** Escribir la prueba de extremo a extremo de inicio fallido y reapertura tras corrección. **RF:** RF-11. **Hecho cuando:** el escenario lanza el proceso real y verifica mensaje, ausencia de simulación y nuevo intento.
-- [ ] **S01-T03** Verificar la procedencia y condiciones de uso de los assets originales necesarios. **RF:** RF-11; atribución de la spec. **Hecho cuando:** cada asset requerido y sus condiciones están identificados y los bloqueos de licencia comunicados.
-- [ ] **S01-T04** Preparar el ejecutable Rust con GPUI mínimo que necesita el mensaje de inicio. **RF:** RF-11. **Hecho cuando:** la aplicación abre una ventana real en Windows 11 y las dependencias utilizadas están justificadas.
-- [ ] **S01-T05** Validar todos los assets requeridos y reunir sus errores. **RF:** RF-11. **Hecho cuando:** los casos de ausencia y daño producen una lista completa con identidad de cada recurso.
-- [ ] **S01-T06** Conectar el resultado de validación con el mensaje y el bloqueo de inicio. **RF:** RF-11. **Hecho cuando:** la ventana muestra todos los afectados y no presenta la simulación como iniciada.
-- [ ] **S01-T07** Ejecutar aceptación de extremo a extremo y reapertura con assets corregidos. **RF:** RF-11. **Hecho cuando:** las pruebas del proceso real pasan en Windows 11; el inicio visual correcto se verifica en S02.
-- [ ] **S01-T08** Ejecutar regresión y comprobaciones de formato y análisis. **RF:** RF-11. **Hecho cuando:** las pruebas de S01 pasan tras integrar y las comprobaciones aplicables no presentan fallos.
-- [ ] **S01-T09** Verificar criterios e integración recursos → ventana. **RF:** RF-11. **Hecho cuando:** el mensaje completo, el bloqueo y el nuevo intento están comprobados; RF-11 permanece parcial.
+- [x] **S01-T01** Escribir pruebas de comportamiento para uno y varios assets ausentes o dañados. **RF:** RF-11. **Hecho cuando:** las pruebas exigen la lista completa y el bloqueo del inicio.
+- [x] **S01-T02** Escribir la prueba de extremo a extremo de inicio fallido y reapertura tras corrección. **RF:** RF-11. **Hecho cuando:** el escenario lanza el proceso real y verifica mensaje, ausencia de simulación y nuevo intento.
+- [x] **S01-T03** Verificar la procedencia y condiciones de uso de los assets originales necesarios. **RF:** RF-11; atribución de la spec. **Hecho cuando:** cada asset requerido y sus condiciones están identificados y los bloqueos de licencia comunicados.
+- [x] **S01-T04** Preparar el ejecutable Rust con GPUI mínimo que necesita el mensaje de inicio. **RF:** RF-11. **Hecho cuando:** la aplicación abre una ventana real en Windows 11 y las dependencias utilizadas están justificadas.
+- [x] **S01-T05** Validar todos los assets requeridos y reunir sus errores. **RF:** RF-11. **Hecho cuando:** los casos de ausencia y daño producen una lista completa con identidad de cada recurso.
+- [x] **S01-T06** Conectar el resultado de validación con el mensaje y el bloqueo de inicio. **RF:** RF-11. **Hecho cuando:** la ventana muestra todos los afectados y no presenta la simulación como iniciada.
+- [x] **S01-T07** Ejecutar aceptación de extremo a extremo y reapertura con assets corregidos. **RF:** RF-11. **Hecho cuando:** las pruebas del proceso real pasan en Windows 11; el inicio visual correcto se verifica en S02.
+- [x] **S01-T08** Ejecutar regresión y comprobaciones de formato y análisis. **RF:** RF-11. **Hecho cuando:** las pruebas de S01 pasan tras integrar y las comprobaciones aplicables no presentan fallos.
+- [x] **S01-T09** Verificar criterios e integración recursos → ventana. **RF:** RF-11. **Hecho cuando:** el mensaje completo, el bloqueo y el nuevo intento están comprobados; RF-11 permanece parcial.
 
 ## S02 — Observar la escena y las ondas iniciales
 

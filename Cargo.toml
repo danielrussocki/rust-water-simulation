@@ -1,0 +1,13 @@
+[package]
+name = "water-simulation"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# RF-11 requires a real Windows window for startup errors.
+gpui = { version = "0.2.2", default-features = false, features = ["windows-manifest"] }
+# RF-11 requires detecting damaged original JPEG assets.
+image = { version = "0.25", default-features = false, features = ["jpeg"] }
+
+[dev-dependencies]
+tempfile = "3"

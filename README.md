@@ -2,7 +2,17 @@
 
 Los seis JPEG originales están en `assets/`. Ejecute `cargo run` desde la raíz
 del proyecto: la aplicación busca los recursos en `assets/`, relativo al
-directorio de trabajo. La escena todavía no está implementada.
+directorio de trabajo.
+
+## Presentación de S02
+
+La ventana usa GPUI 0.2.2 tanto para cargar los JPEG locales originales como
+para presentar una capa `canvas` nativa con el recipiente, la esfera y la malla
+de agua. La malla recibe el estado de simulación independiente de GPUI y se
+actualiza por cuadro; no se comparten texturas entre GPUI y otra API gráfica.
+Esta vía no añade dependencias: GPUI ya era necesaria para la ventana de
+RF-11, y `image` ya valida los JPEG. Los reflejos, refracciones, oclusión,
+sombras y cáusticas siguen pendientes de S08.
 
 ## Procedencia de los recursos
 

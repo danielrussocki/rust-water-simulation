@@ -3,6 +3,21 @@
 use std::{fs, process::Command, thread, time::Duration};
 use water_simulation::REQUIRED_ASSETS;
 
+struct TestProcess(std::process::Child);
+
+impl Drop for TestProcess {
+    fn drop(&mut self) {
+        if matches!(self.0.try_wait(), Ok(None)) {
+            if let Err(error) = self.0.kill() {
+                eprintln!("No se pudo cerrar el proceso de prueba: {error}");
+            }
+            if let Err(error) = self.0.wait() {
+                eprintln!("No se pudo esperar al proceso de prueba: {error}");
+            }
+        }
+    }
+}
+
 fn title(pid: u32) -> String {
     for _ in 0..60 {
         let output = Command::new("powershell")
@@ -67,14 +82,16 @@ fn arranque_fallido_y_reapertura_tras_corregir_assets() {
     fs::remove_file(assets.join("tiles.jpg")).expect("eliminar imagen");
     fs::write(assets.join("xneg.jpg"), b"danado").expect("dañar imagen");
 
-    let mut first = Command::new(env!("CARGO_BIN_EXE_water-simulation"))
-        .current_dir(dir.path())
-        .spawn()
-        .expect("iniciar aplicación");
-    let first_title = title(first.id());
-    let message = window_text(first.id());
-    close_window(first.id());
-    first.wait().expect("esperar primera instancia");
+    let mut first = TestProcess(
+        Command::new(env!("CARGO_BIN_EXE_water-simulation"))
+            .current_dir(dir.path())
+            .spawn()
+            .expect("iniciar aplicación"),
+    );
+    let first_title = title(first.0.id());
+    let message = window_text(first.0.id());
+    close_window(first.0.id());
+    first.0.wait().expect("esperar primera instancia");
     assert!(first_title.contains("tiles.jpg"));
     assert!(first_title.contains("xneg.jpg"));
     assert!(!first_title.contains("Simulación iniciada"));
@@ -90,26 +107,30 @@ fn arranque_fallido_y_reapertura_tras_corregir_assets() {
             .save(assets.join(name))
             .expect("corregir imagen");
     }
-    let mut second = Command::new(env!("CARGO_BIN_EXE_water-simulation"))
-        .current_dir(dir.path())
-        .spawn()
-        .expect("reabrir aplicación");
-    let second_title = title(second.id());
-    close_window(second.id());
-    second.wait().expect("esperar segunda instancia");
-    assert_eq!(second_title, "Recursos válidos");
+    let mut second = TestProcess(
+        Command::new(env!("CARGO_BIN_EXE_water-simulation"))
+            .current_dir(dir.path())
+            .spawn()
+            .expect("reabrir aplicación"),
+    );
+    let second_title = title(second.0.id());
+    close_window(second.0.id());
+    second.0.wait().expect("esperar segunda instancia");
+    assert_eq!(second_title, "Simulación de agua");
 
     for name in REQUIRED_ASSETS {
         fs::remove_file(assets.join(name)).expect("eliminar asset");
     }
-    let mut third = Command::new(env!("CARGO_BIN_EXE_water-simulation"))
-        .current_dir(dir.path())
-        .spawn()
-        .expect("iniciar aplicación sin assets");
-    let _ = title(third.id());
-    let message = window_text(third.id());
-    close_window(third.id());
-    third.wait().expect("esperar tercera instancia");
+    let mut third = TestProcess(
+        Command::new(env!("CARGO_BIN_EXE_water-simulation"))
+            .current_dir(dir.path())
+            .spawn()
+            .expect("iniciar aplicación sin assets"),
+    );
+    let _ = title(third.0.id());
+    let message = window_text(third.0.id());
+    close_window(third.0.id());
+    third.0.wait().expect("esperar tercera instancia");
     for name in REQUIRED_ASSETS {
         assert!(message.contains(name), "falta {name} en: {message}");
     }

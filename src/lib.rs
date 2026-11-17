@@ -1,5 +1,7 @@
 use std::{fs::File, io::BufReader, path::Path};
 
+pub mod scene;
+
 pub const REQUIRED_ASSETS: [&str; 6] = [
     "tiles.jpg",
     "xneg.jpg",

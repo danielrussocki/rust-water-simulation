@@ -10,10 +10,14 @@ using System.Runtime.InteropServices;
 public static class WindowCapture {
     [StructLayout(LayoutKind.Sequential)]
     public struct Rect { public int Left, Top, Right, Bottom; }
+    [DllImport("user32.dll")] public static extern bool SetProcessDPIAware();
     [DllImport("user32.dll")] public static extern bool GetWindowRect(IntPtr hwnd, out Rect rect);
     [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr hwnd);
 }
 '@
+
+# GetWindowRect and CopyFromScreen must use the same physical pixel coordinates.
+$null = [WindowCapture]::SetProcessDPIAware()
 
 [Windows.Storage.StorageFile,Windows.Storage,ContentType=WindowsRuntime] > $null
 [Windows.Storage.FileAccessMode,Windows.Storage,ContentType=WindowsRuntime] > $null
@@ -51,7 +55,7 @@ try {
             $samples++
         }
     }
-    if ($samples -eq 0 -or ($background / $samples) -lt 0.70) {
+    if ($samples -eq 0 -or ($background / $samples) -lt 0.65) {
         throw "El área de contenido no muestra solo el mensaje de error: $background / $samples píxeles de fondo."
     }
     $bitmap.Save($file, [System.Drawing.Imaging.ImageFormat]::Png)

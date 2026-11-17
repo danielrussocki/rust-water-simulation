@@ -33,16 +33,16 @@ Referencia: [spec aprobada](spec.md) y [plan aprobado](plan.md).
 **RF:** RF-1; RF-2 y RF-11 parciales. **Dependencias:** S01.  
 **Resultado observable:** escena con assets, esfera, recipiente, entorno y ondas iniciales que evolucionan; los efectos visuales completos se cierran en S08.
 
-- [ ] **S02-T01** Escribir pruebas de valores iniciales y de las 20 perturbaciones. **RF:** RF-1. **Hecho cuando:** comprueban posiciones iniciales fijas, estados, radio, fuerzas alternadas y selección uniforme independiente con entradas controladas.
-- [ ] **S02-T02** Escribir pruebas de evolución y del intervalo superior a un segundo. **RF:** RF-2. **Hecho cuando:** comprueban dos pasos por actualización, amortiguación `0.995` y omisión del intervalo indicado.
-- [ ] **S02-T03** Escribir una prueba de extremo a extremo de inicio y movimiento visible. **RF:** RF-1, RF-2. **Hecho cuando:** el proceso real exige escena con recursos originales y cuadros que reflejan la evolución del agua.
-- [ ] **S02-T04** Seleccionar y justificar la vía gráfica necesaria para mostrar la escena con GPUI en Windows. **RF:** RF-1, RF-2. **Hecho cuando:** versión, dependencias y vía de presentación tienen justificación y se comprueba su viabilidad en la ventana real; no se supone que GPUI comparta texturas.
-- [ ] **S02-T05** Inicializar estado de esfera, cámara, luz y perturbaciones originales. **RF:** RF-1. **Hecho cuando:** las pruebas de valores y generación pasan sin introducir controles nuevos.
-- [ ] **S02-T06** Integrar evolución del agua con el estado y los intervalos de actualización. **RF:** RF-2. **Hecho cuando:** pasan las pruebas de pasos, amortiguación y omisión.
-- [ ] **S02-T07** Presentar recipiente, esfera, entorno y agua con los assets originales. **RF:** RF-1, RF-2. **Hecho cuando:** la ventana real muestra la escena y actualiza los cuadros; los efectos pendientes se identifican como parciales.
-- [ ] **S02-T08** Ejecutar aceptación de extremo a extremo y verificar la integración de la imagen en GPUI. **RF:** RF-1, RF-2. **Hecho cuando:** inicio, escena y evolución pasan en Windows 11; se comprueba la presentación y redimensionamiento pertinente de la vista.
-- [ ] **S02-T09** Ejecutar regresión S01 y comprobaciones aplicables. **RF:** RF-1, RF-2, RF-11. **Hecho cuando:** la ruta de error de recursos y las verificaciones de formato, análisis y pruebas pasan.
-- [ ] **S02-T10** Verificar criterios e integración recursos → simulación → escena → ventana. **RF:** RF-1, RF-2. **Hecho cuando:** el estado y la evolución del slice se observan desde la aplicación; la fidelidad completa de RF-2 queda pendiente de S08.
+- [x] **S02-T01** Escribir pruebas de valores iniciales y de las 20 perturbaciones. **RF:** RF-1. **Hecho cuando:** comprueban posiciones iniciales fijas, estados, radio, fuerzas alternadas y selección uniforme independiente con entradas controladas.
+- [x] **S02-T02** Escribir pruebas de evolución y del intervalo superior a un segundo. **RF:** RF-2. **Hecho cuando:** comprueban dos pasos por actualización, amortiguación `0.995` y omisión del intervalo indicado.
+- [x] **S02-T03** Escribir una prueba de extremo a extremo de inicio y movimiento visible. **RF:** RF-1, RF-2. **Hecho cuando:** el proceso real exige escena con recursos originales y cuadros que reflejan la evolución del agua.
+- [x] **S02-T04** Seleccionar y justificar la vía gráfica necesaria para mostrar la escena con GPUI en Windows. **RF:** RF-1, RF-2. **Hecho cuando:** versión, dependencias y vía de presentación tienen justificación y se comprueba su viabilidad en la ventana real; no se supone que GPUI comparta texturas.
+- [x] **S02-T05** Inicializar estado de esfera, cámara, luz y perturbaciones originales. **RF:** RF-1. **Hecho cuando:** las pruebas de valores y generación pasan sin introducir controles nuevos.
+- [x] **S02-T06** Integrar evolución del agua con el estado y los intervalos de actualización. **RF:** RF-2. **Hecho cuando:** pasan las pruebas de pasos, amortiguación y omisión.
+- [x] **S02-T07** Presentar recipiente, esfera, entorno y agua con los assets originales. **RF:** RF-1, RF-2. **Hecho cuando:** la ventana real muestra la escena y actualiza los cuadros; los efectos pendientes se identifican como parciales.
+- [x] **S02-T08** Ejecutar aceptación de extremo a extremo y verificar la integración de la imagen en GPUI. **RF:** RF-1, RF-2. **Hecho cuando:** inicio, escena y evolución pasan en Windows 11; se comprueba la presentación y redimensionamiento pertinente de la vista.
+- [x] **S02-T09** Ejecutar regresión S01 y comprobaciones aplicables. **RF:** RF-1, RF-2, RF-11. **Hecho cuando:** la ruta de error de recursos y las verificaciones de formato, análisis y pruebas pasan.
+- [x] **S02-T10** Verificar criterios e integración recursos → simulación → escena → ventana. **RF:** RF-1, RF-2. **Hecho cuando:** el estado y la evolución del slice se observan desde la aplicación; la fidelidad completa de RF-2 queda pendiente de S08.
 
 ## S03 — Crear ondas sobre el agua
 
